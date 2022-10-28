@@ -1,0 +1,25 @@
+{
+  "name": "pixelvinaigrette/defi-aero-api",
+  "description": "Application serveur d'échange de données",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "davidmars",
+      "email": "david@pixelvinaigrette.com"
+    }
+  ],
+  "require": {
+    "gabordemooij/redbean": "dev-master",
+    "ext-json": "*",
+    "ext-dom": "*",
+    "ext-fileinfo": "*",
+    "ext-iconv": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Utils\\":      ["php/Utils/"],
+      "Models\\":     ["php/Models/"]
+    }
+  }
+}
