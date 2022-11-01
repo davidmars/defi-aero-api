@@ -64,13 +64,14 @@ class Equipe extends BaseModel
     /**
      * Renvoie et crée au besoin une équipe à partir d'un code.
      * @param string $code
+     * @param boolean $createIfNull
      * @return Equipe
      */
-    public static function getByCode($code)
+    public static function getByCode($code, $createIfNull=true)
     {
         /** @var Equipe $e */
         $e=db()->findOne("equipe","code = ?",[$code]);
-        if(!$e){
+        if(!$e && $createIfNull){
             $e=db()->dispense("equipe");
             $e->code=$code;
             db()->store($e);

@@ -6,6 +6,18 @@ import Equipe from "../client-api/Equipe.js";
  */
 const api=new DefiAeroApi(document.getElementById("serverUrl").value);
 
+// REMPLIR LE FORM AVEC LES CONSTANTES
+
+let $selectProjets=document.getElementById('set-projet');
+for(let proj in Equipe.PROJETS){
+    let $opt=document.createElement("option");
+    $opt.text=proj;
+    $opt.value=proj;
+    $selectProjets.append($opt);
+}
+
+
+
 // SERVER URL
 /**
  * Récupère l'url du serveur depuis le champ
@@ -30,8 +42,8 @@ ${JSON.stringify(response, undefined, 2)}
 \/\/------2e argument du callBack------------------------
 ${JSON.stringify(data, undefined, 2)}`;
     //$element.textContent=`${JSON.stringify(data, undefined, 2)}`;
-    $element.classList.remove('success','danger');
-    $element.classList.add(success===null?'normal':success?'success':'danger');
+    $element.classList.remove('success','error');
+    $element.classList.add(success===null?'normal':success?'success':'error');
     prettyCode();
 }
 
@@ -117,10 +129,12 @@ function doSetEquipe(){
     api.setEquipe(
         equipe,
         (equipe,data)=>{
+            console.log("a")
             displayJson($setEquipeLog,equipe,data.body.equipe,true);
             fillEquipeForm(equipe);
         },
         (erreurs,data)=>{
+            console.log("b")
             displayJson($setEquipeLog,erreurs,data,false);
         },
     )

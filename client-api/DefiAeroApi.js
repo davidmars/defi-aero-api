@@ -49,7 +49,7 @@ export default class DefiAeroApi {
 
     /**
      * Permet de tester la connexion au serveur
-     * @param {function} cbSuccess Callback de success, renvoie 'pong'.
+     * @param {function} cbSuccess Callback de success, renvoie un tableau qui ressemble à 'pong','http://url.complete/vers-le/serveur'.
      * @param {function} cbError Callback en cas d'erreur.
      */
     ping(cbSuccess=(apiResponse)=>{console.log(`ping->success()`,apiResponse)},cbError=(apiResponse)=>{console.warn(`ping->error()`,apiResponse)}){
@@ -77,7 +77,9 @@ export default class DefiAeroApi {
     /**
      * Obtenir une équipe par son code barre.
      * Crée l'équipe au besoin
-     * @param code
+     * @param {String} code Le code issu du code barre
+     * @param {Function} cbSuccess Callback en cas de success, le premier argument est l'Equipe créée
+     * @param {Function} cbError Callback en cas d'erreur', le premier argument est le tableau des erreurs rencontrées
      */
     getEquipe(code,cbSuccess=(apiResponse)=>{console.log(`getEquipe->success()`,apiResponse)},cbError=(apiResponse)=>{console.warn(`getEquipe->error()`,apiResponse)}){
         const fd=new FormData();
@@ -107,9 +109,12 @@ export default class DefiAeroApi {
     }
 
     /**
-     * Obtenir une équipe par son code barre.
-     * Crée l'équipe au besoin
+     * Modifier une équipe.
+     * Attention
+     * Si l'équipe n'est pas trouvée alors une erreur est renvoyées
      * @param {Equipe} equipe
+     * @param {Function} cbSuccess Callback en cas de success, le premier argument est l'Equipe modifiée
+     * @param {Function} cbError Callback en cas d'erreur', le premier argument est le tableau des erreurs rencontrées
      */
     setEquipe(equipe,cbSuccess=(apiResponse)=>{console.log(`setEquipe->success()`,apiResponse)},cbError=(apiResponse)=>{console.warn(`setEquipe->error()`,apiResponse)}){
         const fd=new FormData();
@@ -130,7 +135,7 @@ export default class DefiAeroApi {
                         }
                     }
                     ,(data)=>{
-                        //cbError(data.errors,data);
+                        cbError(data.errors,data);
                     }
                 );
             })
