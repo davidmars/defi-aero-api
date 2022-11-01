@@ -6,7 +6,7 @@ $etapeMin=$vv->testAndGetRequest("etapeMin",null,true);
 
 if($vv->success){
    $r=[];
-   $equipes=db()->find("equipe","etape > ? ORDER BY date_modified DESC LIMIT 0,?",[$etapeMin,$howMany]);
+   $equipes=db()->find("equipe","etape >= ? ORDER BY date_modified DESC LIMIT 0,?",[$etapeMin,$howMany]);
    foreach ($equipes as $eq){
        $r[]=$eq->getApiData();
    }
