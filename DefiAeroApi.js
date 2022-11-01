@@ -11,7 +11,7 @@ export default class DefiAeroApi {
          * Version de l'api Javascript
          * @type {string}
          */
-        this.clientVersion="0.0.1";
+        this.clientVersion="0.0.2";
         /**
          * Url absolue vers le serveur
          * @type {string}
