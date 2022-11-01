@@ -1,13 +1,13 @@
-import DefiAeroApi from "../client-api/DefiAeroApi.js";
-import Equipe from "../client-api/Equipe.js";
+import DefiAeroApi from "../DefiAeroApi.js";
+import Equipe from "../Equipe.js";
 /**
  *
  * @type {DefiAeroApi}
  */
 const api=new DefiAeroApi(document.getElementById("serverUrl").value);
+window.api=api;
 
 // REMPLIR LE FORM AVEC LES CONSTANTES
-
 let $selectProjets=document.getElementById('set-projet');
 for(let proj in Equipe.PROJETS){
     let $opt=document.createElement("option");
@@ -29,6 +29,23 @@ for(let membre in Equipe.MEMBRES){
     $opt.value=membre;
     $selectMembres.append($opt);
 }
+
+//remplir le code
+let $constantes=document.getElementById("constantes");
+$constantes.textContent=
+`\/\/------ Equipe.CARBURANTS --------------
+${JSON.stringify(Equipe.CARBURANTS, undefined, 2)}
+\/\/------ Equipe.MEMBRES --------------
+${JSON.stringify(Equipe.MEMBRES, undefined, 2)}
+\/\/------ Equipe.PROJETS --------------
+${JSON.stringify(Equipe.PROJETS, undefined, 2)}
+\/\/------ Equipe --------------
+${Equipe}
+\/\/------ DefiAeroApi --------------
+${DefiAeroApi}
+
+`
+prettyCode();
 
 
 // SERVER URL
@@ -72,6 +89,10 @@ function prettyCode(){
 
 
 //PING
+/**
+ *
+ * @type {HTMLElement}
+ */
 const $pingBtn=document.getElementById("pingBtn");
 const $pingLog=document.getElementById("pingLog");
 function doPing(){
@@ -152,17 +173,36 @@ function doSetEquipe(){
     api.setEquipe(
         equipe,
         (equipe,data)=>{
-            console.log("a")
             displayJson($setEquipeLog,equipe,data,true);
             fillEquipeForm(equipe);
         },
         (erreurs,data)=>{
-            console.log("b")
             displayJson($setEquipeLog,erreurs,data,false);
         },
     )
 }
 $setEquipeBtn.addEventListener('click',doSetEquipe);
+
+
+//get equipes
+const $getEquipesBtn=document.getElementById("getEquipesBtn");
+const $getEquipesLog=document.getElementById("getEquipesLog");
+const $getEquipesHowMany=document.getElementById("getEquipesHowMany");
+const $getEquipesEtape=document.getElementById("getEquipesEtape");
+function doGetEquipes(){
+    displayJson($getEquipesLog,"loading","",null);
+    api.getEquipes(
+        $getEquipesHowMany.value,
+        $getEquipesEtape.value,
+        (equipes,stats,data)=>{
+            displayJson($getEquipesLog,equipes,stats,true);
+        },
+        (erreurs,data)=>{
+            displayJson($getEquipesLog,erreurs,data,false);
+        },
+    )
+}
+$getEquipesBtn.addEventListener('click',doGetEquipes);
 
 /**
  * Rempli le formulaire de l'équipe

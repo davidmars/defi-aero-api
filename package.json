@@ -1,0 +1,9 @@
+{
+  "name": "defi-aero-api",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "DefiAeroApi.js",
+    "Equipe.js"
+  ]
+}

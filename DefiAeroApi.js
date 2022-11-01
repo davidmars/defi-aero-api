@@ -87,7 +87,6 @@ export default class DefiAeroApi {
         fd.set("code",code);
         fetch(this.serverUrl+"/api/get-equipe",{method: 'POST',body:fd})
             .then(response => {
-                console.log("get",response)
                 this._manageResponse(response,
                     (data)=>{
                         switch (true){
@@ -116,16 +115,14 @@ export default class DefiAeroApi {
      * @param {Function} cbSuccess Callback en cas de success, le premier argument est l'Equipe modifiée
      * @param {Function} cbError Callback en cas d'erreur', le premier argument est le tableau des erreurs rencontrées
      */
-    setEquipe(equipe,cbSuccess=(apiResponse)=>{console.log(`setEquipe->success()`,apiResponse)},cbError=(apiResponse)=>{console.warn(`setEquipe->error()`,apiResponse)}){
+    setEquipe(equipe,cbSuccess=(equipe,apiResponse)=>{console.log(`setEquipe->success()`,equipe,apiResponse)},cbError=(errors,apiResponse)=>{console.warn(`setEquipe->error()`,errors,apiResponse)}){
         const fd=new FormData();
         fd.set("serverUrl",this.serverUrl);
         fd.set("equipe",JSON.stringify(equipe));
         fetch(this.serverUrl+"/api/set-equipe",{method: 'POST',body:fd})
             .then(response => {
-                console.log("set",response)
                 this._manageResponse(response,
                     (data)=>{
-                    console.log("ok",data)
                         switch (true){
                             case data.body.equipe !== undefined:
                                cbSuccess(new Equipe().load(data.body.equipe),data);
@@ -141,7 +138,45 @@ export default class DefiAeroApi {
             })
             .catch(err => {
                 cbError(["Fetch error setEquipe",err.message]);
-            });
+            }
+        );
+    }
+    /**
+     * Renvoie les dernières équipes classées de la plus récente à la plus vieille
+     * @param {Number} howMany Nombre d'équipes à renvoyer (10 par défaut)
+     * @param {Function} cbSuccess Callback en cas de success, le premier argument est la liste des dernières équipes, le second les stats des carburants
+     * @param {Function} cbError Callback en cas d'erreur', le premier argument est le tableau des erreurs rencontrées
+     */
+    getEquipes(howMany=10,etapeMin=3,cbSuccess=(equipes,apiResponse)=>{console.log(`getEquipes->success()`,equipes,apiResponse)},cbError=(errors,apiResponse)=>{console.warn(`getEquipes->error()`,errors,apiResponse)}){
+        const fd=new FormData();
+        fd.set("serverUrl",this.serverUrl);
+        fd.set("howMany",howMany);
+        fd.set("etapeMin",etapeMin);
+        fetch(this.serverUrl+"/api/get-equipes",{method: 'POST',body:fd})
+            .then(response => {
+                this._manageResponse(response,
+                    (data)=>{
+                        switch (true){
+                            case data.body.equipes !== undefined && data.body.stats !== undefined:
+                                let equipes=[];
+                                data.body.equipes.forEach(eq=>{
+                                    equipes.push(new Equipe().load(eq))
+                                })
+                                cbSuccess(equipes,data.body.stats,data);
+                                break;
+                            default:
+                            cbError(["pas d'équipes"],data);
+                        }
+                    }
+                    ,(data)=>{
+                        cbError(data.errors,data);
+                    }
+                );
+            })
+            .catch(err => {
+                    cbError(["Fetch error getEquipes",err.message]);
+                }
+            );
     }
 
 }
