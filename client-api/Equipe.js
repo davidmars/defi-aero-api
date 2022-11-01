@@ -65,6 +65,11 @@ export default class Equipe{
         };
     }
 
+    /**
+     * Charge les données json dans l'équipe
+     * @param {Object} json
+     * @returns {Equipe}
+     */
     load(json){
         for(let prop in json){
             if( json.hasOwnProperty( prop ) && this.hasOwnProperty( prop )){
@@ -73,14 +78,10 @@ export default class Equipe{
         }
         return this;
     }
-
-    save(){
-
-    }
 }
 
 /**
- * Constantes des différentes valeurs pouvant être attribuées au champ membre
+ * Constantes des différentes valeurs pouvant être attribuées au champ membres
  */
 Equipe.MEMBRES={
     "CP": "CP",

@@ -143,6 +143,11 @@ function doSetEquipe(){
     //les membres
     const $$membres = document.querySelectorAll('#set-membres option:checked');
     equipe.membres = Array.from($$membres).map(el => el.value);
+    //les couleurs
+    for (let piece in equipe.couleurs){
+        let $input=document.querySelector(`[id="set-couleur-${piece}"]`)
+        equipe.couleurs[piece]=$input.value;
+    }
 
     api.setEquipe(
         equipe,
@@ -176,5 +181,10 @@ function fillEquipeForm(equipe){
     document.querySelectorAll('#set-membres option').selected = '';
     equipe.membres.forEach((memb=>{
         document.querySelector(`#set-membres option[value='${memb}']`).selected = 'selected';
-    }))
+    }));
+    //les couleurs
+    for (let piece in equipe.couleurs){
+        let $input=document.querySelector(`[id="set-couleur-${piece}"]`)
+        $input.value=equipe.couleurs[piece];
+    }
 }
