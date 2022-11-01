@@ -52,9 +52,11 @@ npm update
 <input id="serverUrl"
        type="text" class="form-control "
        placeholder="hptps://etc..."
-       value="http://localhost/github/defi-aero-api/server">
+       value="https://001.tilty.io/defi-aero-api/server">
 <h6 class="mt-3">Exemple</h6>
 <pre class="text-white bg-dark p-2 mt-3 language-js">
+import DefiAeroApi from "defi-aero-api/DefiAeroApi";
+
 // définition du serveur via le constructeur.
 const api=new DefiAeroApi('http://mon-serveur.com/serveur');
 
@@ -75,6 +77,8 @@ api.serverUrl = 'http://mon-autre-serveur.com/serveur';
 </p>
 <h6 class="mt-3">Exemple</h6>
 <pre class="text-white bg-dark p-2 mt-3 language-js">
+import DefiAeroApi from "defi-aero-api/DefiAeroApi";
+
 const api=new DefiAeroApi('http://mon-serveur.com/serveur');
 api.ping(
     /**
@@ -116,6 +120,8 @@ api.ping(
 </p>
 <h6 class="mt-3">Exemple</h6>
 <pre class="text-white bg-dark p-2 mt-3 language-js">
+import DefiAeroApi from "defi-aero-api/DefiAeroApi";
+
 const api=new DefiAeroApi('http://mon-serveur.com/serveur');
 api.getEquipe(
     'monCodeBarre',
@@ -165,6 +171,8 @@ api.getEquipe(
 
 <h6 class="mt-3">Exemple</h6>
 <pre class="text-white bg-dark p-2 mt-3 language-js">
+import DefiAeroApi from "defi-aero-api/DefiAeroApi";
+
 const api=new DefiAeroApi('http://mon-serveur.com/serveur');
 /**
  * L'équipe qui va dans un premier temps être récupérée via getEquipe puis modifié via setEquipe
@@ -312,6 +320,8 @@ api.getEquipe(
 </p>
 <h6 class="mt-3">Exemple</h6>
 <pre class="text-white bg-dark p-2 mt-3 language-js">
+import DefiAeroApi from "defi-aero-api/DefiAeroApi";
+
 const api=new DefiAeroApi('http://mon-serveur.com/serveur');
 api.getEquipes(
     10, // renverra 10 équipes maximum
@@ -357,9 +367,14 @@ api.getEquipes(
 <p class="fs-5">
 Certains champs des équipes n'acceptent que certaines valeurs qui sont définies dans des constantes.
 </p>
-<pre id="constantes" class="text-white bg-dark p-2 language-js">
+<pre id="constantes" class="text-white bg-dark p-2 language-js"></pre>
+<hr class="col-3 col-md-2 my-5">
 
-</pre>
+<h1>Classes</h1>
+<p class="fs-5">
+Voici le code source des deux classes du projet avec leur typage commenté
+</p>
+<pre id="classes" class="text-white bg-dark p-2 language-js"></pre>
 <hr class="col-3 col-md-2 my-5">
 
 </main>

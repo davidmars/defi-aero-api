@@ -39,11 +39,16 @@ ${JSON.stringify(Equipe.CARBURANTS, undefined, 2)}
 ${JSON.stringify(Equipe.MEMBRES, undefined, 2)}
 \/\/------ Equipe.PROJETS --------------
 ${JSON.stringify(Equipe.PROJETS, undefined, 2)}
-\/\/------ Equipe --------------
-${Equipe}
-\/\/------ DefiAeroApi --------------
-${DefiAeroApi}
+`;
 
+let $classes=document.getElementById("classes");
+$classes.textContent=`
+\/\/------Code source de la classe Equipe --------------
+${Equipe}
+
+
+\/\/------ Code source de la classe DefiAeroApi --------------
+${DefiAeroApi}
 `
 prettyCode();
 
