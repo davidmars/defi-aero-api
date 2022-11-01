@@ -15,7 +15,20 @@ for(let proj in Equipe.PROJETS){
     $opt.value=proj;
     $selectProjets.append($opt);
 }
-
+let $selectCarburants=document.getElementById('set-carburant');
+for(let carb in Equipe.CARBURANTS){
+    let $opt=document.createElement("option");
+    $opt.text=carb;
+    $opt.value=carb;
+    $selectCarburants.append($opt);
+}
+let $selectMembres=document.getElementById('set-membres');
+for(let membre in Equipe.MEMBRES){
+    let $opt=document.createElement("option");
+    $opt.text=membre;
+    $opt.value=membre;
+    $selectMembres.append($opt);
+}
 
 
 // SERVER URL
@@ -95,7 +108,7 @@ function doGetEquipe(){
     api.getEquipe(
         $getEquipeCodeField.value,
         (equipe,data)=>{
-            displayJson($getEquipeLog,equipe,data.body.equipe,true);
+            displayJson($getEquipeLog,equipe,data,true);
             fillEquipeForm(equipe);
         },
         (erreurs,data)=>{
@@ -126,11 +139,16 @@ function doSetEquipe(){
         let $val=$el.querySelector(".js-val")
         equipe[$var.value]=$val.value;
     });
+
+    //les membres
+    const $$membres = document.querySelectorAll('#set-membres option:checked');
+    equipe.membres = Array.from($$membres).map(el => el.value);
+
     api.setEquipe(
         equipe,
         (equipe,data)=>{
             console.log("a")
-            displayJson($setEquipeLog,equipe,data.body.equipe,true);
+            displayJson($setEquipeLog,equipe,data,true);
             fillEquipeForm(equipe);
         },
         (erreurs,data)=>{
@@ -154,30 +172,9 @@ function fillEquipeForm(equipe){
             }
         }
     }
+    //les membres
+    document.querySelectorAll('#set-membres option').selected = '';
+    equipe.membres.forEach((memb=>{
+        document.querySelector(`#set-membres option[value='${memb}']`).selected = 'selected';
+    }))
 }
-
-/**
- * Récupère la valeur d'un champ
- * @param field
- * @param value
- */
-function getFieldValue(field,value){
-    const $var = document.querySelector(`.js-set-equipe-var-value .js-var[value="${field}"]`)
-    console.log($var);
-    if($var){
-        const $value = $var.closest(".input-group").querySelector(".js-val")
-        console.log($value);
-        return $value.value;
-    }
-    return null;
-}
-
-
-
-
-
-
-
-
-//un petit ping pour commencer...
-//doPing();
