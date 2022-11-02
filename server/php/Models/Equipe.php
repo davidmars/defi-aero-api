@@ -9,9 +9,12 @@ namespace Models;
  * @property string projet Le projet choisi (ENUM)
  * @property string $membresjson Les membres
  * @property string couleursjson Les membres
+ * @property string $lang
+ * @property string $carburant
  */
 class Equipe extends BaseModel
 {
+
 
 
 
@@ -81,13 +84,18 @@ class Equipe extends BaseModel
 
     public function getApiData()
     {
-        $r= parent::getApiData();
-        unset($r["membresjson"]);
-        unset($r["couleursjson"]);
-        unset($r["modelname"]);
+        //$r= parent::getApiData();
+        //unset($r["membresjson"]);
+        //unset($r["couleursjson"]);
+        //unset($r["modelname"]);
+        $r=[];
+        $r["id"]=$this->id;
+        $r["code"]=$this->code;
         $r["name"]=$this->name;
+        $r["lang"]=$this->lang;
         $r["etape"]=$this->etape * 1.0;
         $r["projet"]=$this->projet;
+        $r["carburant"]=$this->carburant;
         $r["membres"]=$this->getMembres();
         $r["couleurs"]=$this->getCouleurs();
         return $r;
