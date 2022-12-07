@@ -78,27 +78,27 @@ export default class Equipe{
  * Constantes des différentes pièces de l'avion
  */
 Equipe.PARTS={
-    "AILES":"AILES"
-    "EMPENNAGE":"EMPENNAGE"
-    "FUSELAGE":"FUSELAGE"
-    "MOTEURS":"MOTEURS"
-    "MOTEUR":"MOTEUR"
-    "AILES_VOLANTE_AV":"AILES_VOLANTE_AV"
-    "AILES_VOLANTE_AR":"AILES_VOLANTE_AR"
-    "MOTEURS_HYD":"MOTEURS_HYD"
-    "FOILS":"FOILS"
-    "PALE":"PALE"
+    "AILES":"AILES",
+    "EMPENNAGE":"EMPENNAGE",
+    "FUSELAGE":"FUSELAGE",
+    "MOTEURS":"MOTEURS",
+    "MOTEUR":"MOTEUR",
+    "AILES_VOLANTE_AV":"AILES_VOLANTE_AV",
+    "AILES_VOLANTE_AR":"AILES_VOLANTE_AR",
+    "MOTEURS_HYD":"MOTEURS_HYD",
+    "FOILS":"FOILS",
+    "PALE":"PALE",
     "HELICE":"HELICE"
 }
 /**
  * Constantes des différentes valeurs pouvant être attribuées au champ membres
  */
 Equipe.MEMBRES={
-    "CHEFFE_EXPLOIT":"CHEFFE_EXPLOIT"
-    "PILOTE_ESSAI":"PILOTE_ESSAI"
-    "CHEF_PROJET":"CHEF_PROJET"
-    "COMMUNIQUANT":"COMMUNIQUANT"
-    "INGENIEUR":"INGENIEUR"
+    "CHEFFE_EXPLOIT":"CHEFFE_EXPLOIT",
+    "PILOTE_ESSAI":"PILOTE_ESSAI",
+    "CHEF_PROJET":"CHEF_PROJET",
+    "COMMUNIQUANT":"COMMUNIQUANT",
+    "INGENIEUR":"INGENIEUR",
     "MECANICIEN":"MECANICIEN"
 }
 /**
