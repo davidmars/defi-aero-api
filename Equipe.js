@@ -74,7 +74,22 @@ export default class Equipe{
         return this;
     }
 }
-
+/**
+ * Constantes des différentes pièces de l'avion
+ */
+Equipe.PARTS={
+    "AILES":"AILES"
+    "EMPENNAGE":"EMPENNAGE"
+    "FUSELAGE":"FUSELAGE"
+    "MOTEURS":"MOTEURS"
+    "MOTEUR":"MOTEUR"
+    "AILES_VOLANTE_AV":"AILES_VOLANTE_AV"
+    "AILES_VOLANTE_AR":"AILES_VOLANTE_AR"
+    "MOTEURS_HYD":"MOTEURS_HYD"
+    "FOILS":"FOILS"
+    "PALE":"PALE"
+    "HELICE":"HELICE"
+}
 /**
  * Constantes des différentes valeurs pouvant être attribuées au champ membres
  */
