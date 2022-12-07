@@ -79,12 +79,12 @@ export default class Equipe{
  * Constantes des différentes valeurs pouvant être attribuées au champ membres
  */
 Equipe.MEMBRES={
-    "CP": "CP",
-    "DIR": "DIR",
-    "ING": "ING",
-    "COM": "COM",
-    "PIL": "PIL",
-    "MEC": "MEC",
+    "CHEFFE_EXPLOIT":"CHEFFE_EXPLOIT"
+    "PILOTE_ESSAI":"PILOTE_ESSAI"
+    "CHEF_PROJET":"CHEF_PROJET"
+    "COMMUNIQUANT":"COMMUNIQUANT"
+    "INGENIEUR":"INGENIEUR"
+    "MECANICIEN":"MECANICIEN"
 }
 /**
  * Constantes des différentes valeurs pouvant être attribuées au champ projet
