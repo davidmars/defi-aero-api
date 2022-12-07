@@ -57,12 +57,7 @@ export default class Equipe{
          * Les couleurs attribuées aux pièces de l'avion
          * @type {{moteur: string, fuselage: string, empennage: string, aile: string}}
          */
-        this.couleurs={
-            "aile":"#808080",
-            "moteur":"#808080",
-            "fuselage":"#808080",
-            "empennage":"#808080",
-        };
+        this.couleurs={};
     }
 
     /**
