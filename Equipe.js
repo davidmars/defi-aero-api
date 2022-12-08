@@ -55,9 +55,13 @@ export default class Equipe{
         this.carburant=null;
         /**
          * Les couleurs attribuées aux pièces de l'avion
-         * @type {{moteur: string, fuselage: string, empennage: string, aile: string}}
+         * @see Equipe.PARTS
+         * @type {*}
          */
         this.couleurs={};
+        for (let part in Equipe.PARTS){
+            this.couleurs[part]="#808080";
+        }
     }
 
     /**

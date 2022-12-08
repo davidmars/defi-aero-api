@@ -145,7 +145,7 @@ api.getEquipe(
 </pre>
 <h6 class="mt-5">Test</h6>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">code</label>
+    <label class="col-sm-3 col-form-label">code</label>
     <div class="col-sm-3">
         <input type="text" class="form-control" id="getEquipeCodeField" placeholder="code" value="AA11BB22CC33">
     </div>
@@ -225,37 +225,37 @@ api.getEquipe(
 </pre>
 <h6 class="my-5">Test</h6>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">id</label>
+    <label class="col-sm-3 col-form-label">id</label>
     <div class="col-sm-3">
         <input type="number" class="form-control" id="set-id" value="" readonly>
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">code</label>
+    <label class="col-sm-3 col-form-label">code</label>
     <div class="col-sm-3">
         <input type="text" class="form-control" id="set-code" value="">
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">name</label>
+    <label class="col-sm-3 col-form-label">name</label>
     <div class="col-sm-3">
         <input type="text" class="form-control" id="set-name" value="">
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">lang</label>
+    <label class="col-sm-3 col-form-label">lang</label>
     <div class="col-sm-3">
         <input type="text" class="form-control" id="set-lang" value="">
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">etape</label>
+    <label class="col-sm-3 col-form-label">etape</label>
     <div class="col-sm-3">
         <input type="number" class="form-control" id="set-etape" value="">
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">projet</label>
+    <label class="col-sm-3 col-form-label">projet</label>
     <div class="col-sm-3">
         <select id="set-projet" class="form-select">
             <option value="">Choisir</option>
@@ -263,13 +263,13 @@ api.getEquipe(
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">membres</label>
+    <label class="col-sm-3 col-form-label">membres</label>
     <div class="col-sm-3">
         <select class="form-select" multiple id="set-membres" style="min-height: 150px"></select>
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">carburant</label>
+    <label class="col-sm-3 col-form-label">carburant</label>
     <div class="col-sm-3">
         <select id="set-carburant" class="form-select">
             <option value="">Choisir</option>
@@ -279,33 +279,19 @@ api.getEquipe(
 
 <h6 class="my-3">Couleurs</h6>
 
-<div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">aile</label>
-    <div class="col-sm-3">
-        <input type="color" class="form-control" id="set-couleur-aile" value="#000000">
-    </div>
-</div>
-<div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">moteur</label>
-    <div class="col-sm-3">
-        <input type="color" class="form-control" id="set-couleur-moteur" value="#000000">
-    </div>
-</div>
-<div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">fuselage</label>
-    <div class="col-sm-3">
-        <input type="color" class="form-control" id="set-couleur-fuselage" value="#000000">
-    </div>
-</div>
-<div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">empennage</label>
-    <div class="col-sm-3">
-        <input type="color" class="form-control" id="set-couleur-empennage" value="#000000">
+
+<div id="parts">
+    <div class="mb-3 row " id="templateCouleurField">
+        <label class="col-sm-3 col-form-label">templateCouleurField</label>
+        <div class="col-sm-3">
+            <input type="color" class="form-control" value="#000000" data-couleur-part="AILE_EXEMPLE">
+        </div>
     </div>
 </div>
 
+
 <a href="#setEquipe" id="setEquipeBtn"
-   class="mb-3 btn btn-primary btn-lg px-4">Enregistrer l'équipe</a>
+   class="mb-3 btn btn-primary btn-lg px-4">Enregistrer l"équipe</a>
 <pre id="setEquipeLog" class="text-white bg-dark p-2 language-js">...</pre>
 <hr class="col-3 col-md-2 my-5">
 
@@ -347,13 +333,13 @@ api.getEquipes(
 </pre>
 <h6 class="mt-5">Test</h6>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">Nombre d'équipes</label>
+    <label class="col-sm-3 col-form-label">Nombre d'équipes</label>
     <div class="col-sm-3">
         <input type="text" class="form-control" id="getEquipesHowMany" placeholder="Nombre d'équipes" value="10">
     </div>
 </div>
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">étape minimum</label>
+    <label class="col-sm-3 col-form-label">étape minimum</label>
     <div class="col-sm-3">
         <input type="text" class="form-control" id="getEquipesEtape" placeholder="Étape minimum" value="3">
     </div>

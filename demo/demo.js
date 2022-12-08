@@ -30,6 +30,18 @@ for(let membre in Equipe.MEMBRES){
     $selectMembres.append($opt);
 }
 
+let $parts=document.getElementById("parts");
+let $templateCouleurField=document.getElementById("templateCouleurField");
+$parts.removeChild($templateCouleurField);
+for (let part in Equipe.PARTS){
+    let $part=$templateCouleurField.cloneNode(true);
+    $part.querySelector(".col-form-label").textContent=part;
+    $part.querySelector(".form-control").setAttribute("data-couleur-part",part);
+    $parts.append($part);
+}
+
+
+
 //remplir le code
 let $constantes=document.getElementById("constantes");
 $constantes.textContent=
@@ -144,7 +156,6 @@ function doGetEquipe(){
 }
 $getEquipeBtn.addEventListener('click',doGetEquipe);
 
-
 //set equipe
 const $setEquipeBtn=document.getElementById("setEquipeBtn");
 const $setEquipeLog=document.getElementById("setEquipeLog");
@@ -171,7 +182,7 @@ function doSetEquipe(){
     equipe.membres = Array.from($$membres).map(el => el.value);
     //les couleurs
     for (let piece in equipe.couleurs){
-        let $input=document.querySelector(`[id="set-couleur-${piece}"]`)
+        let $input=document.querySelector(`[data-couleur-part="${piece}"]`)
         equipe.couleurs[piece]=$input.value;
     }
 
@@ -187,7 +198,6 @@ function doSetEquipe(){
     )
 }
 $setEquipeBtn.addEventListener('click',doSetEquipe);
-
 
 //get equipes
 const $getEquipesBtn=document.getElementById("getEquipesBtn");
@@ -229,7 +239,12 @@ function fillEquipeForm(equipe){
     }));
     //les couleurs
     for (let piece in equipe.couleurs){
-        let $input=document.querySelector(`[id="set-couleur-${piece}"]`)
-        $input.value=equipe.couleurs[piece];
+        let $input=document.querySelector(`[data-couleur-part="${piece}"]`)
+        if($input){
+            $input.value=equipe.couleurs[piece];
+        }else{
+           console.warn(`attention la piece d'avion nommée ${piece} n'est pa sune constante valide`)
+        }
+
     }
 }
