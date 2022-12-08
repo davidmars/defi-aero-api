@@ -243,7 +243,7 @@ function fillEquipeForm(equipe){
         if($input){
             $input.value=equipe.couleurs[piece];
         }else{
-           console.warn(`attention la piece d'avion nommée ${piece} n'est pa sune constante valide`)
+           console.warn(`attention la piece d'avion nommée ${piece} n'est pas une constante valide`)
         }
 
     }
